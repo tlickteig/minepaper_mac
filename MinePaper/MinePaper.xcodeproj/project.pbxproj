@@ -1,0 +1,581 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7CCC67CA2A2CEA7700A1AFD7 /* MinePaperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67C92A2CEA7700A1AFD7 /* MinePaperApp.swift */; };
+		7CCC67CC2A2CEA7700A1AFD7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67CB2A2CEA7700A1AFD7 /* ContentView.swift */; };
+		7CCC67CE2A2CEA7800A1AFD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC67CD2A2CEA7800A1AFD7 /* Assets.xcassets */; };
+		7CCC67D12A2CEA7800A1AFD7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC67D02A2CEA7800A1AFD7 /* Preview Assets.xcassets */; };
+		7CCC67DC2A2CEA7800A1AFD7 /* MinePaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67DB2A2CEA7800A1AFD7 /* MinePaperTests.swift */; };
+		7CCC67E62A2CEA7800A1AFD7 /* MinePaperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67E52A2CEA7800A1AFD7 /* MinePaperUITests.swift */; };
+		7CCC67E82A2CEA7800A1AFD7 /* MinePaperUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67E72A2CEA7800A1AFD7 /* MinePaperUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7CCC67D82A2CEA7800A1AFD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CCC67BE2A2CEA7700A1AFD7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CCC67C52A2CEA7700A1AFD7;
+			remoteInfo = MinePaper;
+		};
+		7CCC67E22A2CEA7800A1AFD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CCC67BE2A2CEA7700A1AFD7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CCC67C52A2CEA7700A1AFD7;
+			remoteInfo = MinePaper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7CCC67C62A2CEA7700A1AFD7 /* MinePaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinePaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CCC67C92A2CEA7700A1AFD7 /* MinePaperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinePaperApp.swift; sourceTree = "<group>"; };
+		7CCC67CB2A2CEA7700A1AFD7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7CCC67CD2A2CEA7800A1AFD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7CCC67D02A2CEA7800A1AFD7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7CCC67D22A2CEA7800A1AFD7 /* MinePaper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MinePaper.entitlements; sourceTree = "<group>"; };
+		7CCC67D72A2CEA7800A1AFD7 /* MinePaperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinePaperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CCC67DB2A2CEA7800A1AFD7 /* MinePaperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinePaperTests.swift; sourceTree = "<group>"; };
+		7CCC67E12A2CEA7800A1AFD7 /* MinePaperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinePaperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CCC67E52A2CEA7800A1AFD7 /* MinePaperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinePaperUITests.swift; sourceTree = "<group>"; };
+		7CCC67E72A2CEA7800A1AFD7 /* MinePaperUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinePaperUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7CCC67C32A2CEA7700A1AFD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CCC67D42A2CEA7800A1AFD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CCC67DE2A2CEA7800A1AFD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7CCC67BD2A2CEA7700A1AFD7 = {
+			isa = PBXGroup;
+			children = (
+				7CCC67C82A2CEA7700A1AFD7 /* MinePaper */,
+				7CCC67DA2A2CEA7800A1AFD7 /* MinePaperTests */,
+				7CCC67E42A2CEA7800A1AFD7 /* MinePaperUITests */,
+				7CCC67C72A2CEA7700A1AFD7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7CCC67C72A2CEA7700A1AFD7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7CCC67C62A2CEA7700A1AFD7 /* MinePaper.app */,
+				7CCC67D72A2CEA7800A1AFD7 /* MinePaperTests.xctest */,
+				7CCC67E12A2CEA7800A1AFD7 /* MinePaperUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7CCC67C82A2CEA7700A1AFD7 /* MinePaper */ = {
+			isa = PBXGroup;
+			children = (
+				7CCC67C92A2CEA7700A1AFD7 /* MinePaperApp.swift */,
+				7CCC67CB2A2CEA7700A1AFD7 /* ContentView.swift */,
+				7CCC67CD2A2CEA7800A1AFD7 /* Assets.xcassets */,
+				7CCC67D22A2CEA7800A1AFD7 /* MinePaper.entitlements */,
+				7CCC67CF2A2CEA7800A1AFD7 /* Preview Content */,
+			);
+			path = MinePaper;
+			sourceTree = "<group>";
+		};
+		7CCC67CF2A2CEA7800A1AFD7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7CCC67D02A2CEA7800A1AFD7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7CCC67DA2A2CEA7800A1AFD7 /* MinePaperTests */ = {
+			isa = PBXGroup;
+			children = (
+				7CCC67DB2A2CEA7800A1AFD7 /* MinePaperTests.swift */,
+			);
+			path = MinePaperTests;
+			sourceTree = "<group>";
+		};
+		7CCC67E42A2CEA7800A1AFD7 /* MinePaperUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7CCC67E52A2CEA7800A1AFD7 /* MinePaperUITests.swift */,
+				7CCC67E72A2CEA7800A1AFD7 /* MinePaperUITestsLaunchTests.swift */,
+			);
+			path = MinePaperUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7CCC67C52A2CEA7700A1AFD7 /* MinePaper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CCC67EB2A2CEA7800A1AFD7 /* Build configuration list for PBXNativeTarget "MinePaper" */;
+			buildPhases = (
+				7CCC67C22A2CEA7700A1AFD7 /* Sources */,
+				7CCC67C32A2CEA7700A1AFD7 /* Frameworks */,
+				7CCC67C42A2CEA7700A1AFD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MinePaper;
+			productName = MinePaper;
+			productReference = 7CCC67C62A2CEA7700A1AFD7 /* MinePaper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7CCC67D62A2CEA7800A1AFD7 /* MinePaperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CCC67EE2A2CEA7800A1AFD7 /* Build configuration list for PBXNativeTarget "MinePaperTests" */;
+			buildPhases = (
+				7CCC67D32A2CEA7800A1AFD7 /* Sources */,
+				7CCC67D42A2CEA7800A1AFD7 /* Frameworks */,
+				7CCC67D52A2CEA7800A1AFD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CCC67D92A2CEA7800A1AFD7 /* PBXTargetDependency */,
+			);
+			name = MinePaperTests;
+			productName = MinePaperTests;
+			productReference = 7CCC67D72A2CEA7800A1AFD7 /* MinePaperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7CCC67E02A2CEA7800A1AFD7 /* MinePaperUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CCC67F12A2CEA7800A1AFD7 /* Build configuration list for PBXNativeTarget "MinePaperUITests" */;
+			buildPhases = (
+				7CCC67DD2A2CEA7800A1AFD7 /* Sources */,
+				7CCC67DE2A2CEA7800A1AFD7 /* Frameworks */,
+				7CCC67DF2A2CEA7800A1AFD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CCC67E32A2CEA7800A1AFD7 /* PBXTargetDependency */,
+			);
+			name = MinePaperUITests;
+			productName = MinePaperUITests;
+			productReference = 7CCC67E12A2CEA7800A1AFD7 /* MinePaperUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7CCC67BE2A2CEA7700A1AFD7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					7CCC67C52A2CEA7700A1AFD7 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					7CCC67D62A2CEA7800A1AFD7 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 7CCC67C52A2CEA7700A1AFD7;
+					};
+					7CCC67E02A2CEA7800A1AFD7 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 7CCC67C52A2CEA7700A1AFD7;
+					};
+				};
+			};
+			buildConfigurationList = 7CCC67C12A2CEA7700A1AFD7 /* Build configuration list for PBXProject "MinePaper" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7CCC67BD2A2CEA7700A1AFD7;
+			productRefGroup = 7CCC67C72A2CEA7700A1AFD7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7CCC67C52A2CEA7700A1AFD7 /* MinePaper */,
+				7CCC67D62A2CEA7800A1AFD7 /* MinePaperTests */,
+				7CCC67E02A2CEA7800A1AFD7 /* MinePaperUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7CCC67C42A2CEA7700A1AFD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CCC67D12A2CEA7800A1AFD7 /* Preview Assets.xcassets in Resources */,
+				7CCC67CE2A2CEA7800A1AFD7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CCC67D52A2CEA7800A1AFD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CCC67DF2A2CEA7800A1AFD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7CCC67C22A2CEA7700A1AFD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CCC67CC2A2CEA7700A1AFD7 /* ContentView.swift in Sources */,
+				7CCC67CA2A2CEA7700A1AFD7 /* MinePaperApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CCC67D32A2CEA7800A1AFD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CCC67DC2A2CEA7800A1AFD7 /* MinePaperTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CCC67DD2A2CEA7800A1AFD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CCC67E82A2CEA7800A1AFD7 /* MinePaperUITestsLaunchTests.swift in Sources */,
+				7CCC67E62A2CEA7800A1AFD7 /* MinePaperUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7CCC67D92A2CEA7800A1AFD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CCC67C52A2CEA7700A1AFD7 /* MinePaper */;
+			targetProxy = 7CCC67D82A2CEA7800A1AFD7 /* PBXContainerItemProxy */;
+		};
+		7CCC67E32A2CEA7800A1AFD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CCC67C52A2CEA7700A1AFD7 /* MinePaper */;
+			targetProxy = 7CCC67E22A2CEA7800A1AFD7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7CCC67E92A2CEA7800A1AFD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7CCC67EA2A2CEA7800A1AFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		7CCC67EC2A2CEA7800A1AFD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MinePaper/MinePaper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MinePaper/Preview Content\"";
+				DEVELOPMENT_TEAM = 2YP3HAP3F2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tlickteig.MinePaper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		7CCC67ED2A2CEA7800A1AFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MinePaper/MinePaper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MinePaper/Preview Content\"";
+				DEVELOPMENT_TEAM = 2YP3HAP3F2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tlickteig.MinePaper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		7CCC67EF2A2CEA7800A1AFD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2YP3HAP3F2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tlickteig.MinePaperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MinePaper.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MinePaper";
+			};
+			name = Debug;
+		};
+		7CCC67F02A2CEA7800A1AFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2YP3HAP3F2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tlickteig.MinePaperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MinePaper.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MinePaper";
+			};
+			name = Release;
+		};
+		7CCC67F22A2CEA7800A1AFD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2YP3HAP3F2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tlickteig.MinePaperUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = MinePaper;
+			};
+			name = Debug;
+		};
+		7CCC67F32A2CEA7800A1AFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2YP3HAP3F2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tlickteig.MinePaperUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = MinePaper;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7CCC67C12A2CEA7700A1AFD7 /* Build configuration list for PBXProject "MinePaper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CCC67E92A2CEA7800A1AFD7 /* Debug */,
+				7CCC67EA2A2CEA7800A1AFD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CCC67EB2A2CEA7800A1AFD7 /* Build configuration list for PBXNativeTarget "MinePaper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CCC67EC2A2CEA7800A1AFD7 /* Debug */,
+				7CCC67ED2A2CEA7800A1AFD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CCC67EE2A2CEA7800A1AFD7 /* Build configuration list for PBXNativeTarget "MinePaperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CCC67EF2A2CEA7800A1AFD7 /* Debug */,
+				7CCC67F02A2CEA7800A1AFD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CCC67F12A2CEA7800A1AFD7 /* Build configuration list for PBXNativeTarget "MinePaperUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CCC67F22A2CEA7800A1AFD7 /* Debug */,
+				7CCC67F32A2CEA7800A1AFD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7CCC67BE2A2CEA7700A1AFD7 /* Project object */;
+}
