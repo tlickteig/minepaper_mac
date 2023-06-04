@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "3EB39C3F-F46E-48DF-8466-134361796764"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "972C6295-B4CE-4EE5-939A-F4AB1A7E6CB7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinePaper/Classes/Utilities.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "downloadImageFromServer(fileName:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "972C6295-B4CE-4EE5-939A-F4AB1A7E6CB7 - 6876191138bf4620"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static MinePaper.Utilities.DownloadImageFromServer(fileName: Swift.String) -&gt; ()"
+                  moduleName = "MinePaper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/timothylickteig/Documents/Repos/minepaper_mac/MinePaper/MinePaper/Classes/Utilities.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "972C6295-B4CE-4EE5-939A-F4AB1A7E6CB7 - d56db8809e99c640"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static MinePaper.Utilities.downloadImageFromServer(fileName: Swift.String) -&gt; ()"
+                  moduleName = "MinePaper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/timothylickteig/Documents/Repos/minepaper_mac/MinePaper/MinePaper/Classes/Utilities.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

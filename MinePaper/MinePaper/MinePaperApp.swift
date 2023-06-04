@@ -11,7 +11,7 @@ import SwiftUI
 struct MinePaperApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainScreen()
         }
     }
 }
