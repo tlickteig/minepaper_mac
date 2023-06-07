@@ -36,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7CA14CFC2A30057A00644CE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7CCC67C62A2CEA7700A1AFD7 /* MinePaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinePaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCC67C92A2CEA7700A1AFD7 /* MinePaperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinePaperApp.swift; sourceTree = "<group>"; };
 		7CCC67CB2A2CEA7700A1AFD7 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		7CCC67C82A2CEA7700A1AFD7 /* MinePaper */ = {
 			isa = PBXGroup;
 			children = (
+				7CA14CFC2A30057A00644CE2 /* Info.plist */,
 				7CCC67F42A2CF49500A1AFD7 /* Classes */,
 				7CCC67C92A2CEA7700A1AFD7 /* MinePaperApp.swift */,
 				7CCC67CB2A2CEA7700A1AFD7 /* MainScreen.swift */,
@@ -440,6 +442,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MinePaper/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -467,6 +470,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MinePaper/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

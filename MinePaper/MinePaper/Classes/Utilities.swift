@@ -11,17 +11,26 @@ struct Utilities {
     
     static func downloadImageFromServer(fileName: String) {
         
-        let url = URL(string: Constants.remoteImagesFolder + "/" + fileName)
+        let sephamore = DispatchSemaphore(value: 0)
+        let fm = FileManager()
         
-        let task = URLSession.shared.dataTask() { (data, response, error)
-            
-            if let error = error {
-                return
+        let url = URL(string: Constants.remoteImagesFolder + "/" + fileName)
+        let task = URLSession.shared.downloadTask(with: url!) { localURL, urlResponse, error in
+            if let localURL = localURL {
+                try? FileManager.default.moveItem(atPath: "/var/tmp/test.txt", toPath: "/Users/timothylickteig/test.txt")
+                //try? FileManager().copyItem(atPath: localURL.absoluteString, toPath: "/var/tmp")
+                print("Hello World!")
             }
             
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                return
-            }
+            sephamore.signal()
         }
+
+        // Start the download
+        task.resume()
+        sephamore.wait()
+    }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }
