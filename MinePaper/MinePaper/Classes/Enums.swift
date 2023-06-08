@@ -12,3 +12,8 @@ enum DownloadStatus {
     case NetworkError
     case FileWriteError
 }
+
+enum NetworkError: Error {
+    case GeneralError
+    case DataFormatError
+}

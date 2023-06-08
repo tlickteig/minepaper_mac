@@ -17,8 +17,12 @@ final class MinePaperTests: XCTestCase {
     }
     
     func testDownloadImage() {
-        let filename = "KQFzzn6-best-1080p-wallpaper.jpg"
-        Utilities.downloadImageFromServer(fileName: filename)
-        Utilities.setWallpaper(fileName: filename, screen: Wallpaper.Screen.index(1))
+        //let filename = "KQFzzn6-best-1080p-wallpaper.jpg"
+        //Utilities.downloadImageFromServer(fileName: filename)
+        //Utilities.setWallpaper(fileName: filename, screen: Wallpaper.Screen.index(1))
+        var fileList = try? Utilities.getImageListFromServer()
+        for file in fileList! {
+            print(file)
+        }
     }
 }
