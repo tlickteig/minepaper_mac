@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CA14D062A314B6000644CE2 /* Wallpaper in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA14D052A314B6000644CE2 /* Wallpaper */; };
+		7CA14D092A31518D00644CE2 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA14D082A31518D00644CE2 /* Files */; };
+		7CA14D0D2A31597E00644CE2 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA14D0C2A31597E00644CE2 /* Enums.swift */; };
 		7CCC67CA2A2CEA7700A1AFD7 /* MinePaperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67C92A2CEA7700A1AFD7 /* MinePaperApp.swift */; };
 		7CCC67CC2A2CEA7700A1AFD7 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67CB2A2CEA7700A1AFD7 /* MainScreen.swift */; };
 		7CCC67CE2A2CEA7800A1AFD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC67CD2A2CEA7800A1AFD7 /* Assets.xcassets */; };
@@ -37,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		7CA14CFC2A30057A00644CE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7CA14D0C2A31597E00644CE2 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7CCC67C62A2CEA7700A1AFD7 /* MinePaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinePaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCC67C92A2CEA7700A1AFD7 /* MinePaperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinePaperApp.swift; sourceTree = "<group>"; };
 		7CCC67CB2A2CEA7700A1AFD7 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
@@ -57,6 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA14D092A31518D00644CE2 /* Files in Frameworks */,
+				7CA14D062A314B6000644CE2 /* Wallpaper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +147,7 @@
 			children = (
 				7CCC67F52A2CF4B100A1AFD7 /* Utilities.swift */,
 				7CCC67F72A2CF5DC00A1AFD7 /* Constants.swift */,
+				7CA14D0C2A31597E00644CE2 /* Enums.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -161,6 +168,10 @@
 			dependencies = (
 			);
 			name = MinePaper;
+			packageProductDependencies = (
+				7CA14D052A314B6000644CE2 /* Wallpaper */,
+				7CA14D082A31518D00644CE2 /* Files */,
+			);
 			productName = MinePaper;
 			productReference = 7CCC67C62A2CEA7700A1AFD7 /* MinePaper.app */;
 			productType = "com.apple.product-type.application";
@@ -233,6 +244,10 @@
 				Base,
 			);
 			mainGroup = 7CCC67BD2A2CEA7700A1AFD7;
+			packageReferences = (
+				7CA14D042A314B6000644CE2 /* XCRemoteSwiftPackageReference "macos-wallpaper" */,
+				7CA14D072A31518D00644CE2 /* XCRemoteSwiftPackageReference "Files" */,
+			);
 			productRefGroup = 7CCC67C72A2CEA7700A1AFD7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,6 +292,7 @@
 			files = (
 				7CCC67F62A2CF4B100A1AFD7 /* Utilities.swift in Sources */,
 				7CCC67CC2A2CEA7700A1AFD7 /* MainScreen.swift in Sources */,
+				7CA14D0D2A31597E00644CE2 /* Enums.swift in Sources */,
 				7CCC67CA2A2CEA7700A1AFD7 /* MinePaperApp.swift in Sources */,
 				7CCC67F82A2CF5DC00A1AFD7 /* Constants.swift in Sources */,
 			);
@@ -596,6 +612,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7CA14D042A314B6000644CE2 /* XCRemoteSwiftPackageReference "macos-wallpaper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/macos-wallpaper";
+			requirement = {
+				kind = exactVersion;
+				version = 2.3.1;
+			};
+		};
+		7CA14D072A31518D00644CE2 /* XCRemoteSwiftPackageReference "Files" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Files";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7CA14D052A314B6000644CE2 /* Wallpaper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CA14D042A314B6000644CE2 /* XCRemoteSwiftPackageReference "macos-wallpaper" */;
+			productName = Wallpaper;
+		};
+		7CA14D082A31518D00644CE2 /* Files */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CA14D072A31518D00644CE2 /* XCRemoteSwiftPackageReference "Files" */;
+			productName = Files;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7CCC67BE2A2CEA7700A1AFD7 /* Project object */;
 }

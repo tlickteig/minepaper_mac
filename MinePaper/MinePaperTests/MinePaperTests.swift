@@ -6,6 +6,8 @@
 //
 
 import XCTest
+import Wallpaper
+
 @testable import MinePaper
 
 final class MinePaperTests: XCTestCase {
@@ -15,6 +17,8 @@ final class MinePaperTests: XCTestCase {
     }
     
     func testDownloadImage() {
-        Utilities.downloadImageFromServer(fileName: "ZlwPHMV-best-1080p-wallpapers.jpg")
+        let filename = "KQFzzn6-best-1080p-wallpaper.jpg"
+        Utilities.downloadImageFromServer(fileName: filename)
+        Utilities.setWallpaper(fileName: filename, screen: Wallpaper.Screen.index(1))
     }
 }

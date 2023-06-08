@@ -6,31 +6,47 @@
 //
 
 import Foundation
+import Wallpaper
+import AppKit
+import Files
 
 struct Utilities {
     
-    static func downloadImageFromServer(fileName: String) {
+    static func downloadImageFromServer(fileName: String) -> DownloadStatus {
         
         let sephamore = DispatchSemaphore(value: 0)
-        let fm = FileManager()
+        var output: DownloadStatus = DownloadStatus.Success
         
         let url = URL(string: Constants.remoteImagesFolder + "/" + fileName)
         let task = URLSession.shared.downloadTask(with: url!) { localURL, urlResponse, error in
-            if let localURL = localURL {
-                try? FileManager.default.moveItem(atPath: "/var/tmp/test.txt", toPath: "/Users/timothylickteig/test.txt")
-                //try? FileManager().copyItem(atPath: localURL.absoluteString, toPath: "/var/tmp")
-                print("Hello World!")
+            if var localURL = localURL {
+                
+                let originFile = try? File(path: localURL.path)
+                if originFile != nil {
+                    try? originFile?.rename(to: fileName, keepExtension: false)
+                    localURL.deleteLastPathComponent()
+                    Constants.localImagesFolder = localURL.path
+                }
+                else {
+                    output = DownloadStatus.FileWriteError
+                }
+            }
+            else {
+                output = DownloadStatus.NetworkError
             }
             
             sephamore.signal()
         }
-
+        
         // Start the download
         task.resume()
         sephamore.wait()
+        return output
     }
     
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    static func setWallpaper(fileName: String, screen: Wallpaper.Screen) {
+        
+        let imageURL = URL(fileURLWithPath: Constants.localImagesFolder + "/" + fileName, isDirectory: false)
+        try! Wallpaper.set(imageURL, screen: screen)
     }
 }
