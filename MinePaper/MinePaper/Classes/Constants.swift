@@ -11,5 +11,4 @@ struct Constants {
     
     static let remoteImagesFolder: String = "http://minepaper.net/wallpapers"
     static let remoteImageListEndpoint: String = "http://minepaper.net/api/allImages.php"
-    static var localImagesFolder: String = ""
 }

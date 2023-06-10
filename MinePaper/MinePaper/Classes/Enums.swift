@@ -17,3 +17,7 @@ enum NetworkError: Error {
     case GeneralError
     case DataFormatError
 }
+
+enum GeneralErrors: Error {
+    case DataReadError
+}

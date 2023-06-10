@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Settings {
+class Settings: Codable {
     
     private var _availableImages: [String] = [String]()
     var availableImages: [String] {
@@ -28,9 +28,19 @@ class Settings {
             return _lastImageSyncedTime
         }
     }
+    
+    private var _screenWallpapers: [ScreenWallpaper] = [ScreenWallpaper]()
+    var screenWallpapers: [ScreenWallpaper] {
+        set {
+            _screenWallpapers = newValue
+        }
+        get {
+            return _screenWallpapers
+        }
+    }
 }
 
-class ScreenWallpaper {
+class ScreenWallpaper: Codable {
 
     private var _currentImage: String = ""
     var currentImage: String {
