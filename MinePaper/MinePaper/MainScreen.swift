@@ -9,26 +9,19 @@ import SwiftUI
 
 struct MainScreen: View {
     let images = returnImagesList()
+    @State var selectedImageName: String? = ""
     
     var body: some View {
         
-        /*NavigationView {
-            List(images) { image in
-                //AsyncImage(url: URL(string: "file://" + image.fullImagePath))
-                    //.aspectRatio(contentMode: .fill)
-                    //.frame(width: 5)
-                Text("Hello World!")
-                    .padding(.vertical, 2)
-                Spacer()
+        NavigationView {
+            List(images, selection: $selectedImageName) { image in
+                AsyncImage(url: URL(string: "file://" + image.fullImagePath), scale: 10)
+                    .padding(1)
             }
-            .background(Color.blue)
-            //.frame(width: 5)
+            
+            Text("\(selectedImageName ?? "N/A")")
         }
-        .background(Color.red)
-        .frame(width: 160)
-        .listStyle(BorderedListStyle())*/
-        
-        
+        .listStyle(.sidebar)
     }
     
     static func returnImagesList() -> [WallpaperOption] {
