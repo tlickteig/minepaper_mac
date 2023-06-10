@@ -12,13 +12,23 @@ struct MainScreen: View {
     
     var body: some View {
         
-        NavigationView {
+        /*NavigationView {
             List(images) { image in
-                AsyncImage(url: URL(string: "file://" + image.fullImagePath))
-                    //.aspectRatio(contentMode: .fit)
+                //AsyncImage(url: URL(string: "file://" + image.fullImagePath))
+                    //.aspectRatio(contentMode: .fill)
+                    //.frame(width: 5)
+                Text("Hello World!")
+                    .padding(.vertical, 2)
+                Spacer()
             }
+            .background(Color.blue)
+            //.frame(width: 5)
         }
-        .padding()
+        .background(Color.red)
+        .frame(width: 160)
+        .listStyle(BorderedListStyle())*/
+        
+        
     }
     
     static func returnImagesList() -> [WallpaperOption] {
