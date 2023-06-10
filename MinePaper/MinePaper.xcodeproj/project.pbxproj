@@ -11,6 +11,7 @@
 		7CA14D092A31518D00644CE2 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA14D082A31518D00644CE2 /* Files */; };
 		7CA14D0D2A31597E00644CE2 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA14D0C2A31597E00644CE2 /* Enums.swift */; };
 		7CA14D0F2A31888100644CE2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA14D0E2A31888100644CE2 /* Settings.swift */; };
+		7CA14D152A340E2900644CE2 /* UIObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA14D142A340E2900644CE2 /* UIObjects.swift */; };
 		7CCC67CA2A2CEA7700A1AFD7 /* MinePaperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67C92A2CEA7700A1AFD7 /* MinePaperApp.swift */; };
 		7CCC67CC2A2CEA7700A1AFD7 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67CB2A2CEA7700A1AFD7 /* MainScreen.swift */; };
 		7CCC67CE2A2CEA7800A1AFD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC67CD2A2CEA7800A1AFD7 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		7CA14CFC2A30057A00644CE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7CA14D0C2A31597E00644CE2 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7CA14D0E2A31888100644CE2 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		7CA14D142A340E2900644CE2 /* UIObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIObjects.swift; sourceTree = "<group>"; };
 		7CCC67C62A2CEA7700A1AFD7 /* MinePaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinePaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCC67C92A2CEA7700A1AFD7 /* MinePaperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinePaperApp.swift; sourceTree = "<group>"; };
 		7CCC67CB2A2CEA7700A1AFD7 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				7CCC67F72A2CF5DC00A1AFD7 /* Constants.swift */,
 				7CA14D0C2A31597E00644CE2 /* Enums.swift */,
 				7CA14D0E2A31888100644CE2 /* Settings.swift */,
+				7CA14D142A340E2900644CE2 /* UIObjects.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				7CA14D0D2A31597E00644CE2 /* Enums.swift in Sources */,
 				7CCC67CA2A2CEA7700A1AFD7 /* MinePaperApp.swift in Sources */,
 				7CCC67F82A2CF5DC00A1AFD7 /* Constants.swift in Sources */,
+				7CA14D152A340E2900644CE2 /* UIObjects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

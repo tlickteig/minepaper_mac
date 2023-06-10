@@ -8,26 +8,31 @@
 import SwiftUI
 
 struct MainScreen: View {
+    let images = returnImagesList()
+    
     var body: some View {
         
-        TabView() {
-            HStack {
-                Spacer()
-                VStack {
-                    Spacer()
-                    Text("First Tab!")
-                    Spacer()
-                }
-                Spacer()
-            }
-            .background(Color.blue)
-            .tabItem {
-                VStack {
-                    Text("Desktop")
-                }
+        NavigationView {
+            List(images) { image in
+                AsyncImage(url: URL(string: "file://" + image.fullImagePath))
+                    //.aspectRatio(contentMode: .fit)
             }
         }
         .padding()
+    }
+    
+    static func returnImagesList() -> [WallpaperOption] {
+        
+        var output = [WallpaperOption]()
+        let imageList = try? Utilities.scanImagesDirectory()
+        
+        if imageList != nil {
+            for image in imageList! {
+                output.append(WallpaperOption(imageName: image))
+            }
+        }
+        
+        return output
     }
 }
 
