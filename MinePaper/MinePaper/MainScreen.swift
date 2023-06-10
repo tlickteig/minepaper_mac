@@ -6,22 +6,39 @@
 //
 
 import SwiftUI
+import Wallpaper
 
 struct MainScreen: View {
-    let images = returnImagesList()
-    @State var selectedImageName: String? = ""
     
+    let images = returnImagesList()
     var body: some View {
         
-        NavigationView {
-            List(images, selection: $selectedImageName) { image in
-                AsyncImage(url: URL(string: "file://" + image.fullImagePath), scale: 10)
-                    .padding(1)
+        VStack {
+            NavigationView {
+                List(images) { image in
+                    NavigationLink(destination: WallpaperSelectedScreen(selectedImage: image)) {
+                        ZStack {
+                            HStack(alignment: .center) {
+                                AsyncImage(url: URL(string: "file://" + image.fullImagePath), scale: 15)
+                                    .padding(1)
+                                    .cornerRadius(10)
+                                    .aspectRatio(contentMode: .fill)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.bottom, 1)
+                            .padding(.top, 1)
+                        }
+                    }
+                }
             }
+            .listStyle(.sidebar)
             
-            Text("\(selectedImageName ?? "N/A")")
+            Spacer()
+            HStack {
+                Text("Hello World!")
+            }
+            Spacer()
         }
-        .listStyle(.sidebar)
     }
     
     static func returnImagesList() -> [WallpaperOption] {
@@ -36,6 +53,45 @@ struct MainScreen: View {
         }
         
         return output
+    }
+}
+
+struct WallpaperSelectedScreen: View {
+    
+    private var image: WallpaperOption
+    private var screens: [String]
+    
+    @State private var selectedDisplay: String
+    
+    init(selectedImage: WallpaperOption) {
+        image = selectedImage
+        selectedDisplay = ""
+        screens = [String]()
+        
+        var index: Int = 0
+        for (_) in Wallpaper.screenNames {
+            index += 1
+            screens.append("Screen \(index)")
+        }
+        
+        if screens.count > 0 {
+            selectedDisplay = screens[0]
+        }
+    }
+    
+    var body: some View {
+        
+        VStack {
+            Picker(selection: $selectedDisplay, label: Text("Select Display: ")) {
+                ForEach(screens, id: \.self) { screen in
+                    Text(screen)
+                }
+            }
+            AsyncImage(url: URL(string: "file://" + image.fullImagePath), scale: 3)
+                .padding(1)
+                .cornerRadius(10)
+                .aspectRatio(contentMode: .fill)
+        }
     }
 }
 
