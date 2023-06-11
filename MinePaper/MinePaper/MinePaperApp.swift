@@ -12,7 +12,7 @@ struct MinePaperApp: App {
     var body: some Scene {
         WindowGroup {
             MainScreen()
-                .frame(minWidth: 400, minHeight: 400)
+                .frame(width: 800, height: 550)
         }
         .windowResizability(.contentSize)
     }

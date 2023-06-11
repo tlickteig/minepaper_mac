@@ -59,38 +59,51 @@ struct MainScreen: View {
 struct WallpaperSelectedScreen: View {
     
     private var image: WallpaperOption
-    private var screens: [String]
+    private var screens: [Int]
     
-    @State private var selectedDisplay: String
+    @State private var selectedDisplay: Int
     
     init(selectedImage: WallpaperOption) {
         image = selectedImage
-        selectedDisplay = ""
-        screens = [String]()
+        selectedDisplay = 0
+        screens = [Int]()
         
         var index: Int = 0
         for (_) in Wallpaper.screenNames {
+            screens.append(index)
             index += 1
-            screens.append("Screen \(index)")
-        }
-        
-        if screens.count > 0 {
-            selectedDisplay = screens[0]
         }
     }
     
     var body: some View {
         
         VStack {
-            Picker(selection: $selectedDisplay, label: Text("Select Display: ")) {
-                ForEach(screens, id: \.self) { screen in
-                    Text(screen)
+            HStack {
+                Spacer()
+                Picker(selection: $selectedDisplay, label: Text("Select Display: ")) {
+                    ForEach(screens, id: \.self) { screen in
+                        Text("Screen \(screen + 1)")
+                    }
                 }
+                .frame(width: 300, alignment: .top)
+                .padding(.top, 10)
+                Spacer()
             }
+            Spacer()
             AsyncImage(url: URL(string: "file://" + image.fullImagePath), scale: 3)
                 .padding(1)
                 .cornerRadius(10)
                 .aspectRatio(contentMode: .fill)
+            Spacer()
+            Button("Set Wallpaper") {
+                
+            }
+            Spacer()
+        }
+        .onAppear {
+            if screens.count > 0 {
+                selectedDisplay = screens[0]
+            }
         }
     }
 }
