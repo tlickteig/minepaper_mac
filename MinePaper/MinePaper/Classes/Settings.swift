@@ -42,6 +42,16 @@ class Settings: Codable {
 
 class ScreenWallpaper: Codable {
 
+    private var _screenName: String = ""
+    var screenName: String {
+        set {
+            _screenName = newValue
+        }
+        get {
+            return _screenName
+        }
+    }
+    
     private var _currentImage: String = ""
     var currentImage: String {
         set {

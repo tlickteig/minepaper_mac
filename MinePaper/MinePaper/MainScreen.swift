@@ -59,20 +59,13 @@ struct MainScreen: View {
 struct WallpaperSelectedScreen: View {
     
     private var image: WallpaperOption
-    private var screens: [Int]
+    private var screens: [NSScreen] = NSScreen.screens
     
-    @State private var selectedDisplay: Int
+    @State private var selectedDisplay: NSScreen
     
     init(selectedImage: WallpaperOption) {
         image = selectedImage
-        selectedDisplay = 0
-        screens = [Int]()
-        
-        var index: Int = 0
-        for (_) in Wallpaper.screenNames {
-            screens.append(index)
-            index += 1
-        }
+        selectedDisplay = screens[0]
     }
     
     var body: some View {
@@ -82,7 +75,7 @@ struct WallpaperSelectedScreen: View {
                 Spacer()
                 Picker(selection: $selectedDisplay, label: Text("Select Display: ")) {
                     ForEach(screens, id: \.self) { screen in
-                        Text("Screen \(screen + 1)")
+                        Text(screen.localizedName)
                     }
                 }
                 .frame(width: 300, alignment: .top)
@@ -97,6 +90,10 @@ struct WallpaperSelectedScreen: View {
             Spacer()
             Button("Set Wallpaper") {
                 
+                let fullImagePath = "file://" + image.fullImagePath
+                var screensTemp = [NSScreen]()
+                screensTemp.append(selectedDisplay)
+                try? Wallpaper.set(URL(string: fullImagePath)!, screen: .nsScreens(screensTemp))
             }
             Spacer()
         }
