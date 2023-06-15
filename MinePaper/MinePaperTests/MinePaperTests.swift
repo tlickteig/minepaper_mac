@@ -17,13 +17,15 @@ final class MinePaperTests: XCTestCase {
     }
     
     func testDownloadImage() {
-        NSScreen.screens.forEach {
-            var imagePath = "file:///Users/timothylickteig/Library/Containers/com.tlickteig.MinePaper/Data/Library/Images/38dU0UH-best-1080p-wallpaper.jpg"
+        /*NSScreen.screens.forEach {
+            var imagePath = "38dU0UH-best-1080p-wallpaper.jpg"
             
             var screens: [NSScreen] = [NSScreen]()
             screens.append($0)
             
             try? Wallpaper.set(URL(string: imagePath)!, screen: .nsScreens(screens))
-        }
+        }*/
+        //Utilities.deleteImageFromDisk(fileName: "KQFzzn6-best-1080p-wallpaper.jpg")
+        try? Utilities.syncImagesWithServer()
     }
 }

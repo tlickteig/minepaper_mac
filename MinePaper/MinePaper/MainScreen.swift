@@ -10,6 +10,7 @@ import Wallpaper
 
 struct MainScreen: View {
     
+    let imageSync = try? Utilities.syncImagesWithServer()
     let images = returnImagesList()
     var body: some View {
         

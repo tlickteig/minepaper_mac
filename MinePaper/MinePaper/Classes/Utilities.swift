@@ -12,6 +12,89 @@ import Files
 
 struct Utilities {
     
+    static func syncImagesWithServer() throws {
+        
+        let settings = try? readSettingsFromDisk()
+        guard settings != nil else {
+            throw GeneralErrors.DataReadError
+        }
+        
+        let availableImages = try? scanImagesDirectory()
+        guard availableImages != nil else {
+            throw GeneralErrors.DataReadError
+        }
+        
+        let serverFileList = try? getImageListFromServer()
+        guard serverFileList != nil else {
+            throw NetworkError.GeneralError
+        }
+        
+        if serverFileList!.count > 0 {
+            
+            var tempAvailableImages = try? scanImagesDirectory()
+            guard tempAvailableImages != nil else {
+                throw GeneralErrors.DataReadError
+            }
+            
+            for imageName in availableImages! {
+                
+                if !serverFileList!.contains(imageName) {
+                    deleteImageFromDisk(fileName: imageName)
+                    tempAvailableImages = tempAvailableImages!.filter { $0 != imageName }
+                }
+            }
+            
+            settings!.availableImages = tempAvailableImages!
+            for imageName in serverFileList! {
+                
+                if !settings!.availableImages.contains(imageName) {
+                    
+                    var tries = 0
+                    var imagesDownloaded = 0
+                    while imagesDownloaded < 25 {
+                        
+                        do {
+                            let downloadStatus = downloadImageFromServer(fileName: imageName)
+                            if downloadStatus == DownloadStatus.Success {
+                                tempAvailableImages!.append(imageName)
+                                imagesDownloaded += 1
+                                break
+                            }
+                            else if downloadStatus == DownloadStatus.NetworkError {
+                                throw NetworkError.GeneralError
+                            }
+                            else if downloadStatus == DownloadStatus.FileWriteError {
+                                throw GeneralErrors.DataWriteError
+                            }
+                            else if downloadStatus == DownloadStatus.InputDataError {
+                                throw NetworkError.InputDataError
+                            }
+                            else {
+                                throw GeneralErrors.GeneralError
+                            }
+                        }
+                        catch {
+                            if tries < 3 {
+                                tries += 1
+                            }
+                            else {
+                                throw error
+                            }
+                        }
+                    }
+                }
+            }
+            
+            settings!.availableImages = tempAvailableImages!
+            do {
+                try writeSettingsToDisk(settings: settings!)
+            }
+            catch {
+                throw GeneralErrors.DataWriteError
+            }
+        }
+    }
+    
     static func writeSettingsToDisk(settings: Settings) throws {
         
         let jsonEncoder = JSONEncoder()
@@ -121,43 +204,63 @@ struct Utilities {
         var output: DownloadStatus = DownloadStatus.Success
         
         let url = URL(string: Constants.remoteImagesFolder + "/" + fileName)
-        let task = URLSession.shared.downloadTask(with: url!) { localURL, urlResponse, error in
-            if var localURL = localURL {
-                
-                let originFile = try? File(path: localURL.path)
-                if originFile != nil {
-                    try? originFile?.rename(to: fileName, keepExtension: false)
-                    localURL.deleteLastPathComponent()
+        if url == nil {
+            output = DownloadStatus.InputDataError
+        }
+        else {
+            let task = URLSession.shared.downloadTask(with: url!) { localURL, urlResponse, error in
+                if var localURL = localURL {
                     
-                    let imageFile = try? File(path: localURL.path + "/" + fileName)
-                    if imageFile == nil {
-                        output = DownloadStatus.FileWriteError
-                    }
-                    else {
-                        let destinationFolder = try? Folder(path: getImagesDirectory())
-                        if destinationFolder == nil {
+                    let originFile = try? File(path: localURL.path)
+                    if originFile != nil {
+                        try? originFile?.rename(to: fileName, keepExtension: false)
+                        localURL.deleteLastPathComponent()
+                        
+                        let imageFile = try? File(path: localURL.path + "/" + fileName)
+                        if imageFile == nil {
                             output = DownloadStatus.FileWriteError
                         }
                         else {
-                            try? imageFile?.copy(to: destinationFolder!)
+                            let destinationFolder = try? Folder(path: getImagesDirectory())
+                            if destinationFolder == nil {
+                                output = DownloadStatus.FileWriteError
+                            }
+                            else {
+                                try? imageFile?.copy(to: destinationFolder!)
+                            }
                         }
+                    }
+                    else {
+                        output = DownloadStatus.FileWriteError
                     }
                 }
                 else {
-                    output = DownloadStatus.FileWriteError
+                    output = DownloadStatus.NetworkError
                 }
-            }
-            else {
-                output = DownloadStatus.NetworkError
+                
+                sephamore.signal()
             }
             
-            sephamore.signal()
+            // Start the download
+            task.resume()
+            sephamore.wait()
         }
         
-        // Start the download
-        task.resume()
-        sephamore.wait()
         return output
+    }
+    
+    static func deleteImageFromDisk(fileName: String) {
+        
+        let imageDirectoryString = try? getImagesDirectory()
+        if imageDirectoryString != nil {
+            let imageDirectory = try? Folder(path: imageDirectoryString!)
+            if imageDirectory != nil {
+                let imageToDelete = try? imageDirectory!.file(at: fileName)
+                if imageToDelete != nil {
+                    try? imageToDelete!.delete()
+                }
+            }
+        }
     }
     
     static func setWallpaper(fileName: String, screen: Wallpaper.Screen) throws {
