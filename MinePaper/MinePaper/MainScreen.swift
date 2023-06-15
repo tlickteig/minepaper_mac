@@ -30,6 +30,7 @@ struct MainScreen: View {
                             .padding(.top, 1)
                         }
                     }
+                    .frame(width: 135)
                 }
             }
             .listStyle(.sidebar)
@@ -63,10 +64,12 @@ struct WallpaperSelectedScreen: View {
     private var screens: [NSScreen] = NSScreen.screens
     
     @State private var selectedDisplay: NSScreen
+    @State private var imageOpacity: Double
     
     init(selectedImage: WallpaperOption) {
         image = selectedImage
         selectedDisplay = screens[0]
+        imageOpacity = 0
     }
     
     var body: some View {
@@ -88,6 +91,10 @@ struct WallpaperSelectedScreen: View {
                 .padding(1)
                 .cornerRadius(10)
                 .aspectRatio(contentMode: .fill)
+                .opacity(imageOpacity)
+                .onAppear() {
+                    imageOpacity = 100
+                }
             Spacer()
             Button("Set Wallpaper") {
                 
