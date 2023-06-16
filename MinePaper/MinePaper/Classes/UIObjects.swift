@@ -7,29 +7,6 @@
 
 import Foundation
 
-class RotateFrequency: Identifiable {
-    
-    private var _rotateFrequencyMinutes: Int = 0
-    var rotateFrequencyMinutes: Int {
-        set {
-            _rotateFrequencyMinutes = newValue
-        }
-        get {
-            return _rotateFrequencyMinutes
-        }
-    }
-    
-    private var _label: String = ""
-    var label: String {
-        set {
-            _label = newValue
-        }
-        get {
-            return _label
-        }
-    }
-}
-
 class WallpaperOption: Identifiable {
     
     init(imageName: String) {
