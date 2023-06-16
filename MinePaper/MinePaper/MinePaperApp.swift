@@ -13,6 +13,9 @@ struct MinePaperApp: App {
         WindowGroup {
             MainScreen()
                 .frame(width: 800, height: 550)
+                .toolbar {
+                    AutoRotateSettings()
+                }
         }
         .windowResizability(.contentSize)
     }

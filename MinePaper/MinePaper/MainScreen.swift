@@ -34,12 +34,6 @@ struct MainScreen: View {
                 Text("Select an image to preview")
             }
             .navigationViewStyle(DoubleColumnNavigationViewStyle())
-            
-            Spacer()
-            HStack {
-                Text("Hello World!")
-            }
-            Spacer()
         }
     }
     
@@ -99,11 +93,7 @@ struct WallpaperSelectedScreen: View {
                 }
             Spacer()
             Button("Set Wallpaper") {
-                
-                let fullImagePath = "file://" + image.fullImagePath
-                var screensTemp = [NSScreen]()
-                screensTemp.append(selectedDisplay)
-                try? Wallpaper.set(URL(string: fullImagePath)!, screen: .nsScreens(screensTemp))
+                try? Utilities.setWallpaper(fileName: image.imageName, screen: selectedDisplay)
             }
             .frame(alignment: .bottom)
             .padding(.bottom, 10)

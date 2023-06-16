@@ -38,6 +38,26 @@ class Settings: Codable {
             return _screenWallpapers
         }
     }
+    
+    private var _autoRotateMinutes: Int = 0
+    var autoRotateMinutes: Int {
+        set {
+            _autoRotateMinutes = newValue
+        }
+        get {
+            return _autoRotateMinutes
+        }
+    }
+    
+    private var _isRotating: Bool = false
+    var isRotating: Bool {
+        set {
+            _isRotating = newValue
+        }
+        get {
+            return _isRotating
+        }
+    }
 }
 
 class ScreenWallpaper: Codable {
@@ -62,16 +82,6 @@ class ScreenWallpaper: Codable {
         }
     }
     
-    private var _isRotating: Bool = false
-    var isRotating: Bool {
-        set {
-            _isRotating = newValue
-        }
-        get {
-            return _isRotating
-        }
-    }
-    
     private var _lastRotatedTime: Date = Date.distantPast
     var lastRotatedTime: Date {
         set {
@@ -79,16 +89,6 @@ class ScreenWallpaper: Codable {
         }
         get {
             return _lastRotatedTime
-        }
-    }
-    
-    private var _autoRotateMinutes: Int = 0
-    var autoRotateMinutes: Int {
-        set {
-            _autoRotateMinutes = newValue
-        }
-        get {
-            return _autoRotateMinutes
         }
     }
 }

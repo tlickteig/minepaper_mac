@@ -86,6 +86,7 @@ struct Utilities {
             }
             
             settings!.availableImages = tempAvailableImages!
+            settings!.lastImageSyncedTime = Date()
             do {
                 try writeSettingsToDisk(settings: settings!)
             }
@@ -263,9 +264,27 @@ struct Utilities {
         }
     }
     
-    static func setWallpaper(fileName: String, screen: Wallpaper.Screen) throws {
+    static func setWallpaper(fileName: String, screen: NSScreen) throws {
+        
+        var screensTemp = [NSScreen]()
+        screensTemp.append(screen)
+        
         let imageURL = URL(fileURLWithPath: try Utilities.getImagesDirectory() + "/" + fileName, isDirectory: false)
-        try! Wallpaper.set(imageURL, screen: screen)
+        try! Wallpaper.set(imageURL, screen: .nsScreens(screensTemp))
+        
+        let settings = try? Utilities.readSettingsFromDisk()
+        guard settings != nil else {
+            throw GeneralErrors.DataReadError
+        }
+        
+        let wallpaperScreen = ScreenWallpaper()
+        wallpaperScreen.currentImage = fileName
+        wallpaperScreen.screenName = screen.localizedName
+        wallpaperScreen.lastRotatedTime = Date()
+        
+        settings!.screenWallpapers = settings!.screenWallpapers.filter { $0.screenName != screen.localizedName }
+        settings!.screenWallpapers.append(wallpaperScreen)
+        try? Utilities.writeSettingsToDisk(settings: settings!)
     }
     
     static func getDataDirectory() throws -> String {
