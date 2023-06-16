@@ -10,6 +10,12 @@ import SwiftUI
 struct AutoRotateSettings: View {
     
     @State private var toggled: Bool = false
+    @State private var rotateOptions: [RotateFrequency]
+    @State private var selectedRotateOption: RotateFrequency
+    
+    /*init() {
+        rotateOptions
+    }*/
     
     var body: some View {
         HStack {
@@ -22,6 +28,8 @@ struct AutoRotateSettings: View {
                 settings!.isRotating = toggled
                 try? Utilities.writeSettingsToDisk(settings: settings!)
             }
+            
+            //Picker
         }
         .onAppear {
             let settings = try? Utilities.readSettingsFromDisk()
