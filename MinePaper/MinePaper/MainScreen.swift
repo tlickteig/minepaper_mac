@@ -12,28 +12,28 @@ struct MainScreen: View {
     
     let imageSync = try? Utilities.syncImagesWithServer()
     let images = returnImagesList()
+    
+    @State var sideBarVisibility: NavigationSplitViewVisibility = .doubleColumn
+    
     var body: some View {
         
         VStack {
-            NavigationView {
+            NavigationSplitView(columnVisibility: $sideBarVisibility) {
                 List(images) { image in
                     NavigationLink(destination: WallpaperSelectedScreen(selectedImage: image)) {
-                        ZStack {
-                            HStack(alignment: .center) {
-                                AsyncImage(url: URL(string: "file://" + image.fullImagePath), scale: 15)
-                                    .padding(1)
-                                    .cornerRadius(10)
-                                    .aspectRatio(contentMode: .fill)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(.bottom, 1)
-                            .padding(.top, 1)
+                        HStack(alignment: .center) {
+                            AsyncImage(url: URL(string: "file://" + image.fullImagePath), scale: 15)
+                                .padding(1)
+                                .cornerRadius(10)
+                                .aspectRatio(contentMode: .fill)
                         }
                     }
-                    .frame(width: 135)
                 }
+                .frame(width: 175, alignment: .center)
+            } detail: {
+                Text("Select an image to preview")
             }
-            .listStyle(.sidebar)
+            .navigationViewStyle(DoubleColumnNavigationViewStyle())
             
             Spacer()
             HStack {
@@ -93,7 +93,9 @@ struct WallpaperSelectedScreen: View {
                 .aspectRatio(contentMode: .fill)
                 .opacity(imageOpacity)
                 .onAppear() {
-                    imageOpacity = 100
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.125) {
+                        imageOpacity = 100
+                    }
                 }
             Spacer()
             Button("Set Wallpaper") {
@@ -103,7 +105,8 @@ struct WallpaperSelectedScreen: View {
                 screensTemp.append(selectedDisplay)
                 try? Wallpaper.set(URL(string: fullImagePath)!, screen: .nsScreens(screensTemp))
             }
-            Spacer()
+            .frame(alignment: .bottom)
+            .padding(.bottom, 10)
         }
         .onAppear {
             if screens.count > 0 {
