@@ -16,6 +16,11 @@ struct MinePaperApp: App {
                 .toolbar {
                     AutoRotateSettings()
                 }
+                .onAppear {
+                    let timer = Timer.scheduledTimer(withTimeInterval: 20.0, repeats: true) { timer in
+                        try? Utilities.backgroundAppRefresh()
+                    }
+                }
         }
         .windowResizability(.contentSize)
     }

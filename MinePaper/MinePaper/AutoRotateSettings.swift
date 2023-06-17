@@ -58,7 +58,9 @@ struct AutoRotateSettings: View {
                 toggled = settings!.isRotating
                 
                 let index = rotateValues.firstIndex(of: settings!.autoRotateMinutes)
-                selectedRotateOption = rotateOptions[index!]
+                if index != nil {
+                    selectedRotateOption = rotateOptions[index!]
+                }
             }
         }
     }

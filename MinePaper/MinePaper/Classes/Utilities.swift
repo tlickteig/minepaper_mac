@@ -12,6 +12,46 @@ import Files
 
 struct Utilities {
     
+    static func backgroundAppRefresh() throws {
+        
+        let settings = try? readSettingsFromDisk()
+        guard settings != nil else {
+            throw GeneralErrors.DataReadError
+        }
+        
+        if settings!.isRotating {
+            for nsScreen in NSScreen.screens {
+                
+                var currentWallpaperOption = settings!.screenWallpapers.first { $0.screenName == nsScreen.localizedName }
+                if currentWallpaperOption == nil {
+                    
+                    currentWallpaperOption = ScreenWallpaper()
+                    currentWallpaperOption!.screenName = nsScreen.localizedName
+                    settings!.screenWallpapers.append(currentWallpaperOption!)
+                }
+                
+                let numberOfSecondsSinceWallpaperChanged = Int(Date().timeIntervalSince1970 - currentWallpaperOption!.lastRotatedTime.timeIntervalSince1970)
+                if numberOfSecondsSinceWallpaperChanged > (settings!.autoRotateMinutes * 60) {
+                    
+                    var randomImageName = settings!.availableImages.randomElement()
+                    while randomImageName == currentWallpaperOption?.currentImage {
+                        randomImageName = settings!.availableImages.randomElement()
+                    }
+                    
+                    if randomImageName != nil {
+                        try setWallpaper(fileName: randomImageName!, screen: nsScreen)
+                        currentWallpaperOption!.lastRotatedTime = Date()
+                        currentWallpaperOption!.currentImage = randomImageName!
+                        
+                        settings!.screenWallpapers = settings!.screenWallpapers.filter { $0.screenName != currentWallpaperOption!.screenName }
+                        settings!.screenWallpapers.append(currentWallpaperOption!)
+                    }
+                }
+            }
+            try writeSettingsToDisk(settings: settings!)
+        }
+    }
+    
     static func syncImagesWithServer() throws {
         
         let settings = try? readSettingsFromDisk()
@@ -270,7 +310,7 @@ struct Utilities {
         screensTemp.append(screen)
         
         let imageURL = URL(fileURLWithPath: try Utilities.getImagesDirectory() + "/" + fileName, isDirectory: false)
-        try! Wallpaper.set(imageURL, screen: .nsScreens(screensTemp))
+        try Wallpaper.set(imageURL, screen: .nsScreens(screensTemp))
         
         let settings = try? Utilities.readSettingsFromDisk()
         guard settings != nil else {
