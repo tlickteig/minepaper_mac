@@ -22,14 +22,18 @@ struct MainScreen: View {
                 List(images) { image in
                     NavigationLink(destination: WallpaperSelectedScreen(selectedImage: image)) {
                         HStack(alignment: .center) {
-                            AsyncImage(url: URL(string: "file://" + image.fullImagePath), scale: 15)
-                                .padding(1)
-                                .cornerRadius(10)
-                                .aspectRatio(contentMode: .fill)
+                            AsyncImage(url: URL(string: "file://" + image.fullImagePath)) { image in
+                                image.image?
+                                    .resizable()
+                                    .scaledToFill()
+                                    
+                            }
+                            .padding(1)
+                            .cornerRadius(10)
                         }
                     }
                 }
-                .frame(width: 175, alignment: .center)
+                .frame(width: 200, alignment: .center)
             } detail: {
                 Text("Select an image to preview")
             }
@@ -58,12 +62,10 @@ struct WallpaperSelectedScreen: View {
     private var screens: [NSScreen] = NSScreen.screens
     
     @State private var selectedDisplay: NSScreen
-    @State private var imageOpacity: Double
     
     init(selectedImage: WallpaperOption) {
         image = selectedImage
         selectedDisplay = screens[0]
-        imageOpacity = 0
     }
     
     var body: some View {
@@ -81,16 +83,16 @@ struct WallpaperSelectedScreen: View {
                 Spacer()
             }
             Spacer()
-            AsyncImage(url: URL(string: "file://" + image.fullImagePath), scale: 3)
-                .padding(1)
-                .cornerRadius(10)
-                .aspectRatio(contentMode: .fill)
-                .opacity(imageOpacity)
-                .onAppear() {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.125) {
-                        imageOpacity = 100
-                    }
-                }
+            AsyncImage(url: URL(string: "file://" + image.fullImagePath)) { image in
+                image.image?
+                    .resizable()
+                    .scaledToFill()
+                    
+            }
+            .padding(1)
+            .cornerRadius(10)
+            .frame(width: 480, height: 270)
+            
             Spacer()
             Button("Set Wallpaper") {
                 try? Utilities.setWallpaper(fileName: image.imageName, screen: selectedDisplay)
