@@ -91,7 +91,7 @@ struct Utilities {
                     
                     var tries = 0
                     var imagesDownloaded = 0
-                    while imagesDownloaded < 25 {
+                    while imagesDownloaded < 50 {
                         
                         do {
                             let downloadStatus = downloadImageFromServer(fileName: imageName)

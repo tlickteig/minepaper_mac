@@ -7,10 +7,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 		<key>NSExceptionDomains</key>
-		<dict>
-			<key>minepaper.net</key>
-			<string></string>
-		</dict>
+		<dict/>
 	</dict>
 </dict>
 </plist>

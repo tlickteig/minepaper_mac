@@ -9,6 +9,6 @@ import Foundation
 
 struct Constants {
     
-    static let remoteImagesFolder: String = "http://minepaper.net/wallpapers"
-    static let remoteImageListEndpoint: String = "http://minepaper.net/api/allImages.php"
+    static let remoteImagesFolder: String = "https://minepaper.net/wallpapers"
+    static let remoteImageListEndpoint: String = "https://minepaper.net/api/allImages.php"
 }

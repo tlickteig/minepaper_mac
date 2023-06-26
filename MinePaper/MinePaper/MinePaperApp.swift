@@ -17,7 +17,7 @@ struct MinePaperApp: App {
                     AutoRotateSettings()
                 }
                 .onAppear {
-                    let timer = Timer.scheduledTimer(withTimeInterval: 20.0, repeats: true) { timer in
+                    let timer = Timer.scheduledTimer(withTimeInterval: 300.0, repeats: true) { timer in
                         try? Utilities.backgroundAppRefresh()
                     }
                 }

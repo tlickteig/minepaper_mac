@@ -7,11 +7,15 @@
 
 import SwiftUI
 import Wallpaper
+import Kingfisher
 
 struct MainScreen: View {
     
     let imageSync = try? Utilities.syncImagesWithServer()
     let images = returnImagesList()
+    
+    //let memoryCapacity = Foundation.URLCache.shared.memoryCapacity = 100_000_000
+    //let diskCapacity = Foundation.URLCache.shared.diskCapacity = 1_000_000_000
     
     @State var sideBarVisibility: NavigationSplitViewVisibility = .doubleColumn
     
@@ -21,16 +25,20 @@ struct MainScreen: View {
             NavigationSplitView(columnVisibility: $sideBarVisibility) {
                 List(images) { image in
                     NavigationLink(destination: WallpaperSelectedScreen(selectedImage: image)) {
-                        HStack(alignment: .center) {
-                            AsyncImage(url: URL(string: "file://" + image.fullImagePath)) { image in
-                                image.image?
+                        /*AsyncImage(url: URL(string: "file://" + image.fullImagePath)) { phase in
+                            phase.image?
                                     .resizable()
                                     .scaledToFill()
-                                    
-                            }
+                        }
+                        .padding(1)
+                        .cornerRadius(10)*/
+                        //CachedAsyncImage(url: URL(string: "file://" + image.fullImagePath), urlCache: .)
+                        //LazyImage(source: "file://" + image.fullImagePath)
+                        KFImage(URL(string: "file://" + image.fullImagePath))
+                            .resizable()
+                            .scaledToFill()
                             .padding(1)
                             .cornerRadius(10)
-                        }
                     }
                 }
                 .frame(width: 200, alignment: .center)
