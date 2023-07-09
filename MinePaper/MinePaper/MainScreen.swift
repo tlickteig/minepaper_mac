@@ -11,34 +11,30 @@ import Kingfisher
 
 struct MainScreen: View {
     
-    let imageSync = try? Utilities.syncImagesWithServer()
-    let images = returnImagesList()
-    
-    //let memoryCapacity = Foundation.URLCache.shared.memoryCapacity = 100_000_000
-    //let diskCapacity = Foundation.URLCache.shared.diskCapacity = 1_000_000_000
-    
+    @State var wallpapers = [WallpaperOption]()
     @State var sideBarVisibility: NavigationSplitViewVisibility = .doubleColumn
-    
     var body: some View {
         
         VStack {
             NavigationSplitView(columnVisibility: $sideBarVisibility) {
-                List(images) { image in
+                List(wallpapers, id: \.id) { image in
                     NavigationLink(destination: WallpaperSelectedScreen(selectedImage: image)) {
-                        /*AsyncImage(url: URL(string: "file://" + image.fullImagePath)) { phase in
-                            phase.image?
-                                    .resizable()
-                                    .scaledToFill()
-                        }
-                        .padding(1)
-                        .cornerRadius(10)*/
-                        //CachedAsyncImage(url: URL(string: "file://" + image.fullImagePath), urlCache: .)
-                        //LazyImage(source: "file://" + image.fullImagePath)
                         KFImage(URL(string: "file://" + image.fullImagePath))
                             .resizable()
                             .scaledToFill()
                             .padding(1)
                             .cornerRadius(10)
+                    }
+                }
+                .task {
+                    DispatchQueue.global(qos: .userInitiated).async {
+                        do {
+                             try Utilities.syncImagesWithServer()
+                             wallpapers = MainScreen.returnImagesList()
+                         }
+                         catch {
+                             print("An error occurred")
+                         }
                     }
                 }
                 .frame(width: 200, alignment: .center)
