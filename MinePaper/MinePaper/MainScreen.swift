@@ -13,6 +13,9 @@ struct MainScreen: View {
     
     @State var wallpapers = [WallpaperOption]()
     @State var sideBarVisibility: NavigationSplitViewVisibility = .doubleColumn
+    @State var loadingOpacity = 100.0
+    @State var isLoading = true
+    
     var body: some View {
         
         VStack {
@@ -29,17 +32,29 @@ struct MainScreen: View {
                 .task {
                     DispatchQueue.global(qos: .userInitiated).async {
                         do {
-                             try Utilities.syncImagesWithServer()
-                             wallpapers = MainScreen.returnImagesList()
-                         }
-                         catch {
-                             print("An error occurred")
-                         }
+                            defer {
+                                isLoading = false
+                            }
+                            
+                            try Utilities.syncImagesWithServer()
+                            wallpapers = MainScreen.returnImagesList()
+                        }
+                        catch {
+                            print("An error occurred")
+                        }
                     }
                 }
                 .frame(width: 200, alignment: .center)
+                
             } detail: {
-                Text("Select an image to preview")
+                VStack {
+                    ProgressView()
+                    Text("")
+                    Text("Downloading images...")
+                }
+                .opacity(isLoading ? 1 : 0)
+                
+                Text("Select an image to preview").opacity(isLoading ? 0 : 1)
             }
             .navigationViewStyle(DoubleColumnNavigationViewStyle())
         }
