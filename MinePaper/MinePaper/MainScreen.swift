@@ -13,7 +13,6 @@ struct MainScreen: View {
     
     @State var wallpapers = [WallpaperOption]()
     @State var sideBarVisibility: NavigationSplitViewVisibility = .doubleColumn
-    @State var loadingOpacity = 100.0
     @State var isLoading = true
     
     var body: some View {
