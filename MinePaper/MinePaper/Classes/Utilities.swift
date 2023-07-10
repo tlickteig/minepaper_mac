@@ -84,14 +84,20 @@ struct Utilities {
                 }
             }
             
+            var imagesToDownload = Int.random(in: Constants.minImagesToDownload..<Constants.maxImagesToDownload)
+            var imagesDownloaded = 0
+            
             settings!.availableImages = tempAvailableImages!
             for imageName in serverFileList! {
+                
+                if imagesDownloaded > imagesToDownload {
+                    break;
+                }
                 
                 if !settings!.availableImages.contains(imageName) {
                     
                     var tries = 0
-                    var imagesDownloaded = 0
-                    while imagesDownloaded < 50 {
+                    while tries < 3 {
                         
                         do {
                             let downloadStatus = downloadImageFromServer(fileName: imageName)
@@ -114,10 +120,11 @@ struct Utilities {
                             }
                         }
                         catch {
-                            if tries < 3 {
+                            if tries < 2 {
                                 tries += 1
                             }
                             else {
+                                tries += 1
                                 throw error
                             }
                         }
