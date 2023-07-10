@@ -12,6 +12,17 @@ import Files
 
 struct Utilities {
     
+    static func displayErrorMessage(message: String) -> Bool {
+        
+        let alert = NSAlert()
+        alert.messageText = message
+        alert.informativeText = "Please try again later"
+        alert.addButton(withTitle: "Ok")
+        alert.alertStyle = .critical
+        
+        return alert.runModal() == .alertFirstButtonReturn
+    }
+    
     static func backgroundAppRefresh() throws {
         
         let settings = try? readSettingsFromDisk()

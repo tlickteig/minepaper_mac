@@ -15,6 +15,9 @@ struct MainScreen: View {
     @State var sideBarVisibility: NavigationSplitViewVisibility = .doubleColumn
     @State var isLoading = true
     
+    @State var showingFirstAlert = false
+    @State var firstAlertMessage = "An error has occurred"
+    
     var body: some View {
         
         VStack {
@@ -39,7 +42,9 @@ struct MainScreen: View {
                             wallpapers = MainScreen.returnImagesList()
                         }
                         catch {
-                            print("An error occurred")
+                            DispatchQueue.main.async {
+                                _ = Utilities.displayErrorMessage(message: "An error has occurred")
+                            }
                         }
                     }
                 }
