@@ -14,10 +14,7 @@ struct MainScreen: View {
     @State var wallpapers = [WallpaperOption]()
     @State var sideBarVisibility: NavigationSplitViewVisibility = .doubleColumn
     @State var isLoading = true
-    
-    @State var showingFirstAlert = false
-    @State var firstAlertMessage = "An error has occurred"
-    
+
     var body: some View {
         
         VStack {
@@ -39,7 +36,22 @@ struct MainScreen: View {
                             }
                             
                             try Utilities.syncImagesWithServer()
-                            wallpapers = MainScreen.returnImagesList()
+                            wallpapers = try MainScreen.returnImagesList()
+                        }
+                        catch GeneralErrors.DataReadError {
+                            DispatchQueue.main.async {
+                                _ = Utilities.displayErrorMessage(message: "Error occurred loading data")
+                            }
+                        }
+                        catch GeneralErrors.DataWriteError {
+                            DispatchQueue.main.async {
+                                _ = Utilities.displayErrorMessage(message: "Error occurred saving data")
+                            }
+                        }
+                        catch NetworkError.GeneralError {
+                            DispatchQueue.main.async {
+                                _ = Utilities.displayErrorMessage(message: "A network error has occurred")
+                            }
                         }
                         catch {
                             DispatchQueue.main.async {
@@ -64,15 +76,13 @@ struct MainScreen: View {
         }
     }
     
-    static func returnImagesList() -> [WallpaperOption] {
+    static func returnImagesList() throws -> [WallpaperOption] {
         
         var output = [WallpaperOption]()
-        let imageList = try? Utilities.scanImagesDirectory()
+        let imageList = try Utilities.scanImagesDirectory()
         
-        if imageList != nil {
-            for image in imageList! {
-                output.append(WallpaperOption(imageName: image))
-            }
+        for image in imageList {
+            output.append(WallpaperOption(imageName: image))
         }
         
         return output
@@ -118,7 +128,19 @@ struct WallpaperSelectedScreen: View {
             
             Spacer()
             Button("Set Wallpaper") {
-                try? Utilities.setWallpaper(fileName: image.imageName, screen: selectedDisplay)
+                do {
+                    try Utilities.setWallpaper(fileName: image.imageName, screen: selectedDisplay)
+                }
+                catch GeneralErrors.DataReadError {
+                    DispatchQueue.main.async {
+                        _ = Utilities.displayErrorMessage(message: "Error occurred reading data")
+                    }
+                }
+                catch {
+                    DispatchQueue.main.async {
+                        _ = Utilities.displayErrorMessage(message: "An error has occurred")
+                    }
+                }
             }
             .frame(alignment: .bottom)
             .padding(.bottom, 10)

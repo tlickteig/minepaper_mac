@@ -342,7 +342,7 @@ struct Utilities {
         
         settings!.screenWallpapers = settings!.screenWallpapers.filter { $0.screenName != screen.localizedName }
         settings!.screenWallpapers.append(wallpaperScreen)
-        try? Utilities.writeSettingsToDisk(settings: settings!)
+        try Utilities.writeSettingsToDisk(settings: settings!)
     }
     
     static func getDataDirectory() throws -> String {
