@@ -84,7 +84,7 @@ struct Utilities {
                 }
             }
             
-            var imagesToDownload = Int.random(in: Constants.minImagesToDownload..<Constants.maxImagesToDownload)
+            let imagesToDownload = Int.random(in: Constants.minImagesToDownload..<Constants.maxImagesToDownload)
             var imagesDownloaded = 0
             
             settings!.availableImages = tempAvailableImages!
