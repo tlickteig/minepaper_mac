@@ -108,7 +108,12 @@ struct WallpaperSelectedScreen: View {
                 Spacer()
                 Picker(selection: $selectedDisplay, label: Text("Select Display: ")) {
                     ForEach(screens, id: \.self) { screen in
-                        Text(screen.localizedName)
+                        if screen == NSScreen.main {
+                            Text("\(screen.localizedName) (Primary)")
+                        }
+                        else {
+                            Text(screen.localizedName)
+                        }
                     }
                 }
                 .frame(width: 300, alignment: .top)
