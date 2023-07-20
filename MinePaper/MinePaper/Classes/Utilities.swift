@@ -70,7 +70,7 @@ struct Utilities {
             throw GeneralErrors.DataReadError
         }
         
-        let availableImages = try? scanImagesDirectory()
+        var availableImages = try? scanImagesDirectory()
         guard availableImages != nil else {
             throw GeneralErrors.DataReadError
         }
@@ -82,68 +82,75 @@ struct Utilities {
         
         if serverFileList!.count > 0 {
             
-            var tempAvailableImages = try? scanImagesDirectory()
-            guard tempAvailableImages != nil else {
-                throw GeneralErrors.DataReadError
-            }
-            
             for imageName in availableImages! {
                 
                 if !serverFileList!.contains(imageName) {
                     deleteImageFromDisk(fileName: imageName)
-                    tempAvailableImages = tempAvailableImages!.filter { $0 != imageName }
                 }
             }
             
-            let imagesToDownload = Int.random(in: Constants.minImagesToDownload..<Constants.maxImagesToDownload)
-            var imagesDownloaded = 0
+            availableImages = try? scanImagesDirectory()
+            guard availableImages != nil else {
+                throw GeneralErrors.DataReadError
+            }
             
-            settings!.availableImages = tempAvailableImages!
-            for imageName in serverFileList! {
+            while availableImages!.count > Constants.maxImages {
+                let imageToDelete = availableImages!.randomElement()
+                deleteImageFromDisk(fileName: imageToDelete!)
+                availableImages = availableImages!.filter { $0 != imageToDelete! }
+            }
+            
+            let numImagesToDownload = Int.random(in: Constants.minImagesToDownload..<Constants.maxImagesToDownload)
+            var imagesDownloaded = 0
+            var tries = 0
+            var loopCount = 0
+            
+            while serverFileList!.count != availableImages!.count && imagesDownloaded < numImagesToDownload {
                 
-                if imagesDownloaded > imagesToDownload {
-                    break;
-                }
-                
-                if !settings!.availableImages.contains(imageName) {
-                    
-                    var tries = 0
-                    while tries < 3 {
+                loopCount += 1
+                let imageToDownload = serverFileList!.randomElement()
+                if !availableImages!.contains(imageToDownload!)
+                {
+                    do {
                         
-                        do {
-                            let downloadStatus = downloadImageFromServer(fileName: imageName)
-                            if downloadStatus == DownloadStatus.Success {
-                                tempAvailableImages!.append(imageName)
-                                imagesDownloaded += 1
-                                break
-                            }
-                            else if downloadStatus == DownloadStatus.NetworkError {
-                                throw NetworkError.GeneralError
-                            }
-                            else if downloadStatus == DownloadStatus.FileWriteError {
-                                throw GeneralErrors.DataWriteError
-                            }
-                            else if downloadStatus == DownloadStatus.InputDataError {
-                                throw NetworkError.InputDataError
-                            }
-                            else {
-                                throw GeneralErrors.GeneralError
-                            }
+                        if availableImages!.count > Constants.maxImages {
+                            let imageToDelete = availableImages!.randomElement()
+                            deleteImageFromDisk(fileName: imageToDelete!)
+                            availableImages = availableImages!.filter { $0 != imageToDelete! }
                         }
-                        catch {
-                            if tries < 2 {
-                                tries += 1
-                            }
-                            else {
-                                tries += 1
-                                throw error
-                            }
+                        
+                        let downloadStatus = downloadImageFromServer(fileName: imageToDownload!)
+                        availableImages!.append(imageToDownload!)
+                        if downloadStatus == DownloadStatus.Success {
+                            imagesDownloaded += 1
+                        }
+                        else if downloadStatus == DownloadStatus.NetworkError {
+                            throw NetworkError.GeneralError
+                        }
+                        else if downloadStatus == DownloadStatus.InputDataError {
+                            throw NetworkError.InputDataError
+                        }
+                        else if downloadStatus == DownloadStatus.FileWriteError {
+                            throw GeneralErrors.DataWriteError
+                        }
+                    }
+                    catch {
+                        if tries > Constants.maxTries {
+                            throw error
+                        }
+                        else {
+                            tries += 1
                         }
                     }
                 }
             }
             
-            settings!.availableImages = tempAvailableImages!
+            availableImages = try? scanImagesDirectory()
+            guard availableImages != nil else {
+                throw GeneralErrors.DataReadError
+            }
+            
+            settings!.availableImages = availableImages!
             settings!.lastImageSyncedTime = Date()
             do {
                 try writeSettingsToDisk(settings: settings!)
@@ -345,6 +352,7 @@ struct Utilities {
         try Utilities.writeSettingsToDisk(settings: settings!)
     }
     
+    //Data directory is usually: /Users/<user>/Library/Containers/<app name>/Data/Library/
     static func getDataDirectory() throws -> String {
         let url = try? FileManager.default.url(for: .allLibrariesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         return url!.path

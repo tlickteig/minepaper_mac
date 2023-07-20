@@ -11,6 +11,8 @@ struct Constants {
     
     static let remoteImagesFolder: String = "https://minepaper.net/wallpapers"
     static let remoteImageListEndpoint: String = "https://minepaper.net/api/allImages.php"
+    static let maxImages = 500;
+    static let maxTries = 5;
     static let minImagesToDownload = 50;
     static let maxImagesToDownload = 100;
 }
