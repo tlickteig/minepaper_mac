@@ -352,6 +352,21 @@ struct Utilities {
         try Utilities.writeSettingsToDisk(settings: settings!)
     }
     
+    // Heavily based off of: https://stackoverflow.com/questions/44537133/how-to-write-application-logs-to-file-and-get-them
+    static func logErrorToDisk(error: Error) {
+        
+        let fm = FileManager.default
+        let log = fm.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("error.txt")
+        if let handle = try? FileHandle(forWritingTo: log) {
+            handle.seekToEndOfFile()
+            handle.write(error.localizedDescription.data(using: .utf8)!)
+            handle.closeFile()
+        }
+        else {
+            try? error.localizedDescription.data(using: .utf8)?.write(to: log)
+        }
+    }
+    
     //Data directory is usually: /Users/<user>/Library/Containers/<app name>/Data/Library/
     static func getDataDirectory() throws -> String {
         let url = try? FileManager.default.url(for: .allLibrariesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
