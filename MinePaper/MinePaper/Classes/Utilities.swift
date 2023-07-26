@@ -109,8 +109,8 @@ struct Utilities {
                 
                 loopCount += 1
                 let imageToDownload = serverFileList!.randomElement()
-                if !availableImages!.contains(imageToDownload!)
-                {
+                if !availableImages!.contains(imageToDownload!) {
+                    
                     do {
                         
                         if availableImages!.count > Constants.maxImages {
@@ -163,34 +163,39 @@ struct Utilities {
     
     static func writeSettingsToDisk(settings: Settings) throws {
         
-        let jsonEncoder = JSONEncoder()
-        jsonEncoder.dateEncodingStrategy = .iso8601
-        let settingsJson = try jsonEncoder.encode(settings)
-        let jsonString = String(data: settingsJson, encoding: String.Encoding.utf8)
-        
-        let url = try getDataDirectory()
-        let folder = try Folder(path: url)
-        let file = try folder.createFile(named: "settings.json")
-        try file.write(jsonString!)
+        do {
+            let jsonEncoder = JSONEncoder()
+            jsonEncoder.dateEncodingStrategy = .iso8601
+            let settingsJson = try jsonEncoder.encode(settings)
+            let jsonString = String(data: settingsJson, encoding: String.Encoding.utf8)
+            
+            let url = try getDataDirectory()
+            let folder = try Folder(path: url)
+            let file = try folder.createFile(named: "settings.json")
+            try file.write(jsonString!)
+        }
+        catch {
+            logErrorToDisk(error: error, methodName: #function)
+            throw GeneralErrors.DataWriteError
+        }
     }
     
     static func readSettingsFromDisk() throws -> Settings {
         
-        let file = try? File(path: getDataDirectory() + "/settings.json")
         var output = Settings()
-        
-        if file != nil {
-            let fileData = try file!.read()
+        do {
+            let file = try File(path: getDataDirectory() + "/settings.json")
+            let fileData = try file.read()
             let jsonString = String(decoding: fileData, as: UTF8.self)
-            
-            if jsonString != "" {
-                let jsonData = Data(jsonString.utf8)
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                output = try decoder.decode(Settings.self, from: jsonData)
-            }
+            let jsonData = Data(jsonString.utf8)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            output = try decoder.decode(Settings.self, from: jsonData)
         }
-            
+        catch {
+            logErrorToDisk(error: error, methodName: #function)
+        }
+        
         return output
     }
     
