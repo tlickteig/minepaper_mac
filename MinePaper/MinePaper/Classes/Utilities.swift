@@ -196,26 +196,25 @@ struct Utilities {
     
     static func scanImagesDirectory() throws -> [String] {
         
-        let imagesDirectory = try? getImagesDirectory()
-        guard imagesDirectory != nil else {
-            throw GeneralErrors.DataReadError
-        }
-        
-        let imagesFolder = try? Folder(path: imagesDirectory!)
-        guard imagesFolder != nil else {
-            throw GeneralErrors.DataReadError
-        }
-        
-        var output = [String]()
-        let validExtensions = ["jpg", "png", "jpeg", "JPG", "PNG", "JPEG"]
-        
-        imagesFolder!.files.enumerated().forEach { (index, file) in
-            if validExtensions.contains(file.extension!) {
-                output.append(file.name)
+        do {
+            let imagesDirectory = try getImagesDirectory()
+            let imagesFolder = try Folder(path: imagesDirectory)
+            
+            var output = [String]()
+            let validExtensions = ["jpg", "png", "jpeg", "JPG", "PNG", "JPEG"]
+            
+            imagesFolder.files.enumerated().forEach { (index, file) in
+                if validExtensions.contains(file.extension!) {
+                    output.append(file.name)
+                }
             }
+            
+            return output
         }
-        
-        return output
+        catch {
+            logErrorToDisk(error: error, methodName: #function)
+            throw GeneralErrors.DataReadError
+        }
     }
     
     static func getImageListFromServer() throws -> [String] {
@@ -258,6 +257,7 @@ struct Utilities {
             }
             
         } catch {
+            logErrorToDisk(error: error, methodName: #function)
             throw error
         }
         
@@ -276,27 +276,25 @@ struct Utilities {
         else {
             let task = URLSession.shared.downloadTask(with: url!) { localURL, urlResponse, error in
                 if var localURL = localURL {
-                    
-                    let originFile = try? File(path: localURL.path)
-                    if originFile != nil {
-                        try? originFile?.rename(to: fileName, keepExtension: false)
+                    do {
+                        let originFile = try File(path: localURL.path)
+                        try originFile.rename(to: fileName, keepExtension: false)
                         localURL.deleteLastPathComponent()
                         
-                        let imageFile = try? File(path: localURL.path + "/" + fileName)
-                        if imageFile == nil {
-                            output = DownloadStatus.FileWriteError
-                        }
-                        else {
-                            let destinationFolder = try? Folder(path: getImagesDirectory())
-                            if destinationFolder == nil {
-                                output = DownloadStatus.FileWriteError
-                            }
-                            else {
-                                try? imageFile?.copy(to: destinationFolder!)
-                            }
+                        let imageFile = try File(path: localURL.path + "/" + fileName)
+                        let destinationFolder = try Folder(path: getImagesDirectory())
+                        try imageFile.copy(to: destinationFolder)
+                        
+                        var filesToDelete = try FileManager.default.contentsOfDirectory(at: URL(string: localURL.path)!, includingPropertiesForKeys: nil)
+                        filesToDelete = filesToDelete.filter { !$0.hasDirectoryPath }
+                        
+                        for file in filesToDelete {
+                            let fileToDelete = try File(path: file.path)
+                            try fileToDelete.delete()
                         }
                     }
-                    else {
+                    catch {
+                        logErrorToDisk(error: error, methodName: #function)
                         output = DownloadStatus.FileWriteError
                     }
                 }
@@ -325,7 +323,16 @@ struct Utilities {
                 if imageToDelete != nil {
                     try? imageToDelete!.delete()
                 }
+                else {
+                    logErrorToDisk(error: GeneralErrors.DataWriteError, methodName: #function)
+                }
             }
+            else {
+                logErrorToDisk(error: GeneralErrors.DataWriteError, methodName: #function)
+            }
+        }
+        else {
+            logErrorToDisk(error: GeneralErrors.DataWriteError, methodName: #function)
         }
     }
     
@@ -339,6 +346,7 @@ struct Utilities {
         
         let settings = try? Utilities.readSettingsFromDisk()
         guard settings != nil else {
+            logErrorToDisk(error: GeneralErrors.DataReadError, methodName: #function)
             throw GeneralErrors.DataReadError
         }
         
@@ -355,9 +363,9 @@ struct Utilities {
     // Heavily based off of: https://stackoverflow.com/questions/44537133/how-to-write-application-logs-to-file-and-get-them
     static func logErrorToDisk(error: Error, methodName: String) {
         
-        var logData = "\n\(error.localizedDescription) Location: \(methodName)"
+        let logData = "\n\(error.localizedDescription) Location: \(methodName)"
         let fm = FileManager.default
-        var log = fm.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("error.log")
+        let log = fm.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("error.log")
         if let handle = try? FileHandle(forWritingTo: log) {
             handle.seekToEndOfFile()
             handle.write(logData.data(using: .utf8)!)
@@ -365,14 +373,13 @@ struct Utilities {
         }
         else {
             try? logData.data(using: .utf8)?.write(to: log)
-
         }
     }
     
     //Data directory is usually: /Users/<user>/Library/Containers/<app name>/Data/Library/
     static func getDataDirectory() throws -> String {
-        let url = try? FileManager.default.url(for: .allLibrariesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        return url!.path
+        let url = try FileManager.default.url(for: .allLibrariesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        return url.path
     }
     
     static func getImagesDirectory() throws -> String {
