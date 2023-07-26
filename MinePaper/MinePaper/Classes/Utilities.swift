@@ -353,17 +353,19 @@ struct Utilities {
     }
     
     // Heavily based off of: https://stackoverflow.com/questions/44537133/how-to-write-application-logs-to-file-and-get-them
-    static func logErrorToDisk(error: Error) {
+    static func logErrorToDisk(error: Error, methodName: String) {
         
+        var logData = "\n\(error.localizedDescription) Location: \(methodName)"
         let fm = FileManager.default
-        let log = fm.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("error.txt")
+        var log = fm.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("error.log")
         if let handle = try? FileHandle(forWritingTo: log) {
             handle.seekToEndOfFile()
-            handle.write(error.localizedDescription.data(using: .utf8)!)
+            handle.write(logData.data(using: .utf8)!)
             handle.closeFile()
         }
         else {
-            try? error.localizedDescription.data(using: .utf8)?.write(to: log)
+            try? logData.data(using: .utf8)?.write(to: log)
+
         }
     }
     

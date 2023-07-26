@@ -24,4 +24,5 @@ enum GeneralErrors: Error {
     case DataReadError
     case DataWriteError
     case GeneralError
+    case WallpaperSetFailure
 }
