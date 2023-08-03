@@ -8,6 +8,7 @@
 import SwiftUI
 import Wallpaper
 import Kingfisher
+import AlertToast
 
 struct MainScreen: View {
     
@@ -95,6 +96,7 @@ struct WallpaperSelectedScreen: View {
     private var screens: [NSScreen] = NSScreen.screens
     
     @State private var selectedDisplay: NSScreen
+    @State private var showingToast: Bool = false
     
     init(selectedImage: WallpaperOption) {
         image = selectedImage
@@ -135,6 +137,7 @@ struct WallpaperSelectedScreen: View {
             Button("Set Wallpaper") {
                 do {
                     try Utilities.setWallpaper(fileName: image.imageName, screen: selectedDisplay)
+                    showingToast = true
                 }
                 catch GeneralErrors.DataReadError {
                     DispatchQueue.main.async {
@@ -154,6 +157,9 @@ struct WallpaperSelectedScreen: View {
             if screens.count > 0 {
                 selectedDisplay = screens[0]
             }
+        }
+        .toast(isPresenting: $showingToast) {
+            AlertToast(type: .regular, title: "Wallpaper set")
         }
     }
 }
