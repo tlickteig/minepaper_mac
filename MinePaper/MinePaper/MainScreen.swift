@@ -9,12 +9,15 @@ import SwiftUI
 import Wallpaper
 import Kingfisher
 import AlertToast
+import AsyncDownSamplingImage
 
 struct MainScreen: View {
     
     @State var wallpapers = [WallpaperOption]()
     @State var sideBarVisibility: NavigationSplitViewVisibility = .doubleColumn
     @State var isLoading = true
+    @State private var size: CGSize = .init(width: 160, height: 90)
+
 
     var body: some View {
         
@@ -22,11 +25,19 @@ struct MainScreen: View {
             NavigationSplitView(columnVisibility: $sideBarVisibility) {
                 List(wallpapers, id: \.id) { image in
                     NavigationLink(destination: WallpaperSelectedScreen(selectedImage: image)) {
-                        KFImage(URL(string: "file://" + image.fullImagePath))
+                        AsyncDownSamplingImage(
+                          url: URL(string: "file://" + image.fullImagePath),
+                          downsampleSize: size
+                        ) { image in image
                             .resizable()
                             .scaledToFill()
                             .padding(1)
                             .cornerRadius(10)
+                        } fail: { error in
+                          Text("Error loading image")
+                        }
+                        .cornerRadius(10)
+                        .frame(width: 150)
                     }
                 }
                 .task {

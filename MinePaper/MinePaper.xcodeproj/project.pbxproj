@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		7C1B80722A3BE610001DAE77 /* AutoRotateSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1B80712A3BE610001DAE77 /* AutoRotateSettings.swift */; };
-		7C53CD072A49124700D33A7A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7C53CD062A49124700D33A7A /* Kingfisher */; };
 		7CA14D062A314B6000644CE2 /* Wallpaper in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA14D052A314B6000644CE2 /* Wallpaper */; };
 		7CA14D092A31518D00644CE2 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA14D082A31518D00644CE2 /* Files */; };
 		7CA14D0D2A31597E00644CE2 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA14D0C2A31597E00644CE2 /* Enums.swift */; };
 		7CA14D0F2A31888100644CE2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA14D0E2A31888100644CE2 /* Settings.swift */; };
 		7CA14D152A340E2900644CE2 /* UIObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA14D142A340E2900644CE2 /* UIObjects.swift */; };
+		7CC0FCD32A9BD4C0001A9D7B /* AsyncDownSamplingImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7CC0FCD22A9BD4C0001A9D7B /* AsyncDownSamplingImage */; };
 		7CCC67CA2A2CEA7700A1AFD7 /* MinePaperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67C92A2CEA7700A1AFD7 /* MinePaperApp.swift */; };
 		7CCC67CC2A2CEA7700A1AFD7 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67CB2A2CEA7700A1AFD7 /* MainScreen.swift */; };
 		7CCC67CE2A2CEA7800A1AFD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC67CD2A2CEA7800A1AFD7 /* Assets.xcassets */; };
@@ -23,6 +23,8 @@
 		7CCC67E82A2CEA7800A1AFD7 /* MinePaperUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67E72A2CEA7800A1AFD7 /* MinePaperUITestsLaunchTests.swift */; };
 		7CCC67F62A2CF4B100A1AFD7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67F52A2CF4B100A1AFD7 /* Utilities.swift */; };
 		7CCC67F82A2CF5DC00A1AFD7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC67F72A2CF5DC00A1AFD7 /* Constants.swift */; };
+		7CF5968C2A7C15150008A26B /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF5968B2A7C15150008A26B /* AlertToast */; };
+		7CF5968F2A7C89E50008A26B /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF5968E2A7C89E50008A26B /* LaunchAtLogin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,8 +83,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C53CD072A49124700D33A7A /* Kingfisher in Frameworks */,
+				7CF5968C2A7C15150008A26B /* AlertToast in Frameworks */,
+				7CC0FCD32A9BD4C0001A9D7B /* AsyncDownSamplingImage in Frameworks */,
 				7CA14D092A31518D00644CE2 /* Files in Frameworks */,
+				7CF5968F2A7C89E50008A26B /* LaunchAtLogin in Frameworks */,
 				7CA14D062A314B6000644CE2 /* Wallpaper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,6 +191,7 @@
 				7CCC67C32A2CEA7700A1AFD7 /* Frameworks */,
 				7CCC67C42A2CEA7700A1AFD7 /* Resources */,
 				7CA05E312A3E254A00874754 /* Embed ExtensionKit Extensions */,
+				7CC0FCD02A9BBF8F001A9D7B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -196,7 +201,9 @@
 			packageProductDependencies = (
 				7CA14D052A314B6000644CE2 /* Wallpaper */,
 				7CA14D082A31518D00644CE2 /* Files */,
-				7C53CD062A49124700D33A7A /* Kingfisher */,
+				7CF5968B2A7C15150008A26B /* AlertToast */,
+				7CF5968E2A7C89E50008A26B /* LaunchAtLogin */,
+				7CC0FCD22A9BD4C0001A9D7B /* AsyncDownSamplingImage */,
 			);
 			productName = MinePaper;
 			productReference = 7CCC67C62A2CEA7700A1AFD7 /* MinePaper.app */;
@@ -273,7 +280,9 @@
 			packageReferences = (
 				7CA14D042A314B6000644CE2 /* XCRemoteSwiftPackageReference "macos-wallpaper" */,
 				7CA14D072A31518D00644CE2 /* XCRemoteSwiftPackageReference "Files" */,
-				7C53CD052A49124700D33A7A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				7CF5968A2A7C15150008A26B /* XCRemoteSwiftPackageReference "AlertToast" */,
+				7CF5968D2A7C89E50008A26B /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+				7CC0FCD12A9BD4C0001A9D7B /* XCRemoteSwiftPackageReference "AsyncDownSamplingImage" */,
 			);
 			productRefGroup = 7CCC67C72A2CEA7700A1AFD7 /* Products */;
 			projectDirPath = "";
@@ -311,6 +320,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7CC0FCD02A9BBF8F001A9D7B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7CCC67C22A2CEA7700A1AFD7 /* Sources */ = {
@@ -483,7 +513,7 @@
 				CODE_SIGN_ENTITLEMENTS = MinePaper/MinePaper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"MinePaper/Preview Content\"";
 				DEVELOPMENT_TEAM = 2YP3HAP3F2;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -498,7 +528,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tlickteig.MinePaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -515,7 +545,7 @@
 				CODE_SIGN_ENTITLEMENTS = MinePaper/MinePaper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"MinePaper/Preview Content\"";
 				DEVELOPMENT_TEAM = 2YP3HAP3F2;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -530,7 +560,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tlickteig.MinePaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -652,14 +682,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7C53CD052A49124700D33A7A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
 		7CA14D042A314B6000644CE2 /* XCRemoteSwiftPackageReference "macos-wallpaper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/macos-wallpaper";
@@ -676,14 +698,33 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		7CC0FCD12A9BD4C0001A9D7B /* XCRemoteSwiftPackageReference "AsyncDownSamplingImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fummicc1/AsyncDownSamplingImage?source=post_page-----947c11da66d1--------------------------------";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+		7CF5968A2A7C15150008A26B /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		7CF5968D2A7C89E50008A26B /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7C53CD062A49124700D33A7A /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C53CD052A49124700D33A7A /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
 		7CA14D052A314B6000644CE2 /* Wallpaper */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7CA14D042A314B6000644CE2 /* XCRemoteSwiftPackageReference "macos-wallpaper" */;
@@ -693,6 +734,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7CA14D072A31518D00644CE2 /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
+		};
+		7CC0FCD22A9BD4C0001A9D7B /* AsyncDownSamplingImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CC0FCD12A9BD4C0001A9D7B /* XCRemoteSwiftPackageReference "AsyncDownSamplingImage" */;
+			productName = AsyncDownSamplingImage;
+		};
+		7CF5968B2A7C15150008A26B /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CF5968A2A7C15150008A26B /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+		7CF5968E2A7C89E50008A26B /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CF5968D2A7C89E50008A26B /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
