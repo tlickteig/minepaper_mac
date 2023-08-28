@@ -17,12 +17,11 @@ final class MinePaperTests: XCTestCase {
     }
     
     func testDownloadImage() {
-        do {
-            throw GeneralErrors.GeneralError
-        }
-        catch {
-            print(#function)
-            Utilities.logErrorToDisk(error: error, methodName: #function)
-        }
+        if let minepaperApp = FileManager.default.urls(
+                for: .applicationDirectory,
+                in: .systemDomainMask
+            ).first?.appendingPathComponent("MinePaper.app") {
+                NSWorkspace.shared.open(minepaperApp)
+            }
     }
 }

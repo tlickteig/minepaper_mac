@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LaunchAtLogin
 
 struct AutoRotateSettings: View {
     
@@ -22,6 +23,15 @@ struct AutoRotateSettings: View {
     }
     
     var body: some View {
+        
+        if (!LaunchAtLogin.isEnabled) {
+            Button("Launch at Login") {
+                let prefsURL = URL(string: "x-apple.systempreferences:com.apple.LoginItems-Settings.extension")!
+                NSWorkspace.shared.open(prefsURL)
+                _ = LaunchAtLogin.Toggle();
+            }
+        }
+        
         HStack {
             Text("Auto Rotate:")
             Toggle("", isOn: $toggled)
