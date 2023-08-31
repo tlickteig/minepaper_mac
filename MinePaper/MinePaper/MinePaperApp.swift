@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct MinePaperApp: App {
+    @State var currentNumber: String = "1"
+    @State private var isAutoRotating: Bool = false
+    
     var body: some Scene {
         WindowGroup {
             MainScreen()
@@ -17,11 +20,21 @@ struct MinePaperApp: App {
                     AutoRotateSettings()
                 }
                 .onAppear {
-                    let timer = Timer.scheduledTimer(withTimeInterval: 300.0, repeats: true) { timer in
+                    _ = Timer.scheduledTimer(withTimeInterval: 300.0, repeats: true) { timer in
                         try? Utilities.backgroundAppRefresh()
                     }
                 }
         }
         .windowResizability(.contentSize)
+        
+        MenuBarExtra(currentNumber, systemImage: "\(currentNumber).circle") {
+            VStack {
+                Text("MinePaper version \(AppInfo.versionName)")
+                Button("Open main window") {
+                    _ = Utilities.executeSchellScript(command: "open /Applications/MinePaper.app")
+                    NSApplication.shared.activate(ignoringOtherApps: true)
+                }
+            }
+        }
     }
 }

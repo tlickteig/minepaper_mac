@@ -17,11 +17,6 @@ final class MinePaperTests: XCTestCase {
     }
     
     func testDownloadImage() {
-        if let minepaperApp = FileManager.default.urls(
-                for: .applicationDirectory,
-                in: .systemDomainMask
-            ).first?.appendingPathComponent("MinePaper.app") {
-                NSWorkspace.shared.open(minepaperApp)
-            }
+        
     }
 }
