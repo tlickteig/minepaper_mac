@@ -27,12 +27,15 @@ struct MinePaperApp: App {
         }
         .windowResizability(.contentSize)
         
-        MenuBarExtra(currentNumber, systemImage: "\(currentNumber).circle") {
+        MenuBarExtra(currentNumber, systemImage: "photo.stack") {
             VStack {
                 Text("MinePaper version \(AppInfo.versionName)")
                 Button("Open main window") {
                     _ = Utilities.executeSchellScript(command: "open /Applications/MinePaper.app")
                     NSApplication.shared.activate(ignoringOtherApps: true)
+                }
+                Button("Quit") {
+                    NSApplication.shared.terminate(self)
                 }
             }
         }
